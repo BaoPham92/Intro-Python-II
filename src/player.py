@@ -3,7 +3,7 @@
 
 # * PLAYER TEMPLATE FOR INSTANTIATIONS.
 class Player():
-    def __init__(self, name, bio, room='entrance'):
+    def __init__(self, name, bio, room):
         self.name = name
         self.bio = bio
         self.room = room

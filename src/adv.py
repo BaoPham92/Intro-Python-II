@@ -35,6 +35,8 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# * SET ITEMS HERE FOR ROOMS
+
 #
 # Main
 #
@@ -49,55 +51,15 @@ kuma = Player(
 # * MOVE PLACEHOLDER
 move = None
 
-# * TEMPLATE FOR RETURNING A MESSAGE FOR USER'S CHOOSING A DESTINATION.
-def choosingPathMessage():
-        if (kuma.room and kuma.prevRoom): 
-            print(F'You are now in {kuma.room.name} room.\nDescription: {kuma.room.info} \nPreviously, you were in {kuma.prevRoom.name}')
-
-        elif (kuma.room):
-            print(F'You are now in {kuma.room.name} room.\nDescription: {kuma.room.info}')
-        else: 
-            print('Could not detect room! You fall into a never ending dark hole!!') 
-            exit()
-
-while (not hasattr(kuma, 'prevRoom') == None or move == None):
+while (kuma.prev_room != None or move == None):
 
     # * MOVE INDICATOR RESULTS AFTER PROMPTING USER FOR CHOICES.
-    move = input("[0] North [1] East [2] South [3] West [Q] Quit \n")
+    move = input("[N] North [E] East [S] South [W] West [Q] Quit \n").lower()
 
-    # * CONFIRM AND OR CONVERT CHOICES TO INTEGERS
-    if (move == 'Q' or move == 'q'):
-        print(F'You have chosen {move}')
-    else:
-        move = int(move)
-        print(F'You selected option: {move}')
+    if move in ['n','e','s','w']:
+        kuma.choose(move)
 
-    if move == 0 and hasattr(kuma.room, 'n_to'):
-        # * CHOICE SELECTION MESSAGE, AND ROOM CHANGE.
-        kuma.prevRoom = kuma.room
-        kuma.room = kuma.room.n_to
-        choosingPathMessage()
-
-    elif move == 1 and hasattr(kuma.room, 'e_to'):
-        # * CHOICE SELECTION MESSAGE, AND ROOM CHANGE.
-        kuma.prevRoom = kuma.room
-        kuma.room = kuma.room.e_to
-        print(F'DEFNITELY 1 {kuma.prevRoom.name}')
-        choosingPathMessage()
-
-    elif move == 2 and hasattr(kuma.room, 's_to'):
-        # * CHOICE SELECTION MESSAGE, AND ROOM CHANGE.
-        kuma.prevRoom = kuma.room
-        kuma.room = kuma.room.s_to
-        choosingPathMessage()
-
-    elif move == 3 and hasattr(kuma.room, 'w_to'):
-        # * CHOICE SELECTION MESSAGE, AND ROOM CHANGE.
-        kuma.prevRoom = kuma.room
-        kuma.room = kuma.room.w_to
-        choosingPathMessage()
-
-    elif move == 'Q' or move == 'q':
+    elif move == 'q':
         # * CHOICE SELECTION MESSAGE.
         print('Selected Choice: Exiting building...')
         exit()

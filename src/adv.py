@@ -1,4 +1,7 @@
+# * IMPORTS * #
 from room import Room
+from player import Player
+from items import Items
 
 # Declare all the rooms
 
@@ -33,19 +36,48 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# * SET ITEMS HERE FOR ROOMS
+
+items = {
+    "low_potion": Items('low_potion', 'Heals for 20 HP', 'consumable'),
+    "dragon Scimitar": Items('dragon Scimitar', 'Obtained from monkey madness', 'weapon'),
+    "abyssal whip": Items('abyssal whip', 'Obtained as a drop from abyssal demons', 'weapon'),
+    "overload potion": Items('overload potion', 'Overloads are potions which combine the boosting properties of all 5 extreme potions', 'consumable'),
+    "dragon fire shield": Items('dragon fire shield', 'A heavy shield with a snarling, draconic visage.', 'off-hand')
+}
+
+room['foyer'].addItem(items["overload potion"])
+room['foyer'].addItem(items["dragon Scimitar"])
+room['overlook'].addItem(items["abyssal whip"])
+room['narrow'].addItem(items["overload potion"])
+room['treasure'].addItem(items["dragon fire shield"])
+
 #
 # Main
 #
 
-# Make a new player object that is currently in the 'outside' room.
+# * PLAYER CLASS INSTANTIATION.
+kuma = Player(
+    'Kuma',
+    'I am a newbie from Varrock who came from Lumbridge and Farrock',
+    room['outside']
+)
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+# * MOVE PLACEHOLDER
+move = None
+
+while (kuma.prev_room != None or move == None):
+
+    # * MOVE INDICATOR RESULTS AFTER PROMPTING USER FOR CHOICES.
+    move = input("[N] North [E] East [S] South [W] West [Q] Quit \n").lower()
+
+    if move in ['n','e','s','w']:
+        kuma.choose(move)
+
+    elif move == 'q':
+        # * CHOICE SELECTION MESSAGE.
+        print('Selected Choice: Exiting building...')
+        exit()
+else:
+    print('Could not verify user input! Exiting now.')
+    exit()

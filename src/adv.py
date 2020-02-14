@@ -1,6 +1,7 @@
 # * IMPORTS * #
 from room import Room
 from player import Player
+from items import Items
 
 # Declare all the rooms
 
@@ -36,11 +37,20 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 # * SET ITEMS HERE FOR ROOMS
-room['foyer'].items.append('Overload Potion x 1')
-room['foyer'].items.append('Bronze Dagger')
-room['overlook'].items.append('Rune Plate (G) Trimmed')
-room['narrow'].items.append('torch')
-room['treasure'].items.append('Gold')
+
+items = {
+    "low_potion": Items('low_potion', 'Heals for 20 HP', 'consumable'),
+    "dragon Scimitar": Items('dragon Scimitar', 'Obtained from monkey madness', 'weapon'),
+    "abyssal whip": Items('abyssal whip', 'Obtained as a drop from abyssal demons', 'weapon'),
+    "overload potion": Items('overload potion', 'Overloads are potions which combine the boosting properties of all 5 extreme potions', 'consumable'),
+    "dragon fire shield": Items('dragon fire shield', 'A heavy shield with a snarling, draconic visage.', 'off-hand')
+}
+
+room['foyer'].addItem(items["overload potion"])
+room['foyer'].addItem(items["dragon Scimitar"])
+room['overlook'].addItem(items["abyssal whip"])
+room['narrow'].addItem(items["overload potion"])
+room['treasure'].addItem(items["dragon fire shield"])
 
 #
 # Main

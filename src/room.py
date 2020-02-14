@@ -14,3 +14,9 @@ class Room():
 
     def __str__(self):
         return F'Currently, you are in {self.name}. \n'
+
+    def addItem(self, item):
+        self.items.append(item)
+
+    def removeItem(self, item):
+        self.items.remove(item)

@@ -5,6 +5,7 @@ class Room():
     def __init__(self, name, info, prevRoom = None):
         self.name = name
         self.info = info
+        self.items = []
 
         self.n_to = None
         self.e_to = None

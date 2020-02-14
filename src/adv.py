@@ -36,6 +36,10 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 # * SET ITEMS HERE FOR ROOMS
+room['foyer'].items.append('Overload Potion x 1')
+room['overlook'].items.append('Rune Plate (G) Trimmed')
+room['narrow'].items.append('torch')
+room['treasure'].items.append('Gold')
 
 #
 # Main

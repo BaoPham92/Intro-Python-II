@@ -85,11 +85,42 @@ room['varrock'].n_to = room['demacia']
 # * SET ITEMS HERE FOR ROOMS
 
 items = {
-    "low_potion": Items('low_potion', 'Heals for 20 HP', 'consumable'),
-    "dragon Scimitar": Items('dragon Scimitar', 'Obtained from monkey madness', 'weapon'),
-    "abyssal whip": Items('abyssal whip', 'Obtained as a drop from abyssal demons', 'weapon'),
-    "overload potion": Items('overload potion', 'Overloads are potions which combine the boosting properties of all 5 extreme potions', 'consumable'),
-    "dragon fire shield": Items('dragon fire shield', 'A heavy shield with a snarling, draconic visage.', 'off-hand')
+    "low_potion":
+        Items(
+            'low_potion',
+            'Heals for 20 HP',
+            'consumable'
+        ),
+    "dragon Scimitar":
+        Items(
+            'dragon Scimitar',
+            'Obtained from monkey madness',
+            'weapon'
+        ),
+    "abyssal whip":
+        Items(
+            'abyssal whip',
+            'Obtained as a drop from abyssal demons',
+            'weapon'
+        ),
+    "overload potion":
+        Items(
+            'overload potion',
+            'Overloads are potions which combine the boosting properties of all 5 extreme potions',
+            'consumable'
+        ),
+    "dragon fire shield":
+        Items(
+            'dragon fire shield',
+            'A heavy shield with a snarling, draconic visage.',
+            'off-hand'
+        ),
+    "Aegis of the Legion":
+        Items(
+            'dragon fire shield',
+            'Aegis of the Legion bears the crest of the Demacian Jarvan IV OriginalSquare Lightshield Dynasty.',
+            'off-hand'
+        )
 }
 
 room['foyer'].addItem(items["overload potion"])
@@ -97,6 +128,7 @@ room['foyer'].addItem(items["dragon Scimitar"])
 room['overlook'].addItem(items["abyssal whip"])
 room['narrow'].addItem(items["overload potion"])
 room['treasure'].addItem(items["dragon fire shield"])
+room['demacia'].addItem(items["Aegis of the Legion"])
 
 #
 # Main

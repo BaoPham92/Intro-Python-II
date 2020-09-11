@@ -71,7 +71,7 @@ while (kuma.prev_room != None or move == None):
     # * MOVE INDICATOR RESULTS AFTER PROMPTING USER FOR CHOICES.
     move = input("[N] North [E] East [S] South [W] West [Q] Quit \n").lower()
 
-    if move in ['n','e','s','w']:
+    if move in ['n', 'e', 's', 'w']:
         kuma.choose(move)
 
     elif move == 'q':

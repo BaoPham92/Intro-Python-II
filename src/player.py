@@ -35,7 +35,7 @@ class Player():
             item_list_copy = self.room.items.copy()
 
         # * WHILE CHOOSING PATH, IF ITEMS EXIST LOOP ITEMS
-        while (len(item_list_copy) > 0): 
+        while (item_list_copy != None and len(item_list_copy) > 0): 
 
             for item in self.room.items:
                 # * PRESENT PLAYER ITEMS AND CHOICES.
